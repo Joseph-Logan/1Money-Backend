@@ -26,5 +26,7 @@ RUN pnpm run build
 # Use the node user from the image (instead of the root user)
 USER node
 
+ENV ENVIRONMENT=development
+
 # Start the server using the production build
 CMD ["node", "dist/main"]
