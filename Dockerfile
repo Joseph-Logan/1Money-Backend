@@ -26,7 +26,8 @@ RUN pnpm run build
 # Use the node user from the image (instead of the root user)
 USER node
 
-ENV ENVIRONMENT=development
+# NODE_ENV is used to configure or choose which .env file will be readed
+ENV NODE_ENV=development
 
 # Start the server using the production build
 CMD ["node", "dist/main"]

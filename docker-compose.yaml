@@ -2,7 +2,7 @@
 version: '3.9'
 services:
   local:
-    container_name: 1moneywallet-container
+    container_name: 1moneywallet-container-local
     image: 1moneywallet-local:0.1.0
     build:
       dockerfile: Dockerfile
@@ -22,3 +22,26 @@ services:
     ports:
       - 3000:3000
     restart: unless-stopped
+
+  development:
+    container_name: 1moneywallet-container-development
+    image: 1moneywallet-development:0.1.0
+    build:
+      dockerfile: Dockerfile
+      # Only will build development stage from our dockerfile
+      target: development
+      # Root dir
+      context: .
+
+    # https://docs.docker.com/storage/volumes/
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+      - ~/.aws/:/root/.aws:ro
+
+    # Run a command against the development stage of the image
+    command: pnpm start:dev
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+

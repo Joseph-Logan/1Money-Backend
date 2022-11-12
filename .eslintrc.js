@@ -27,7 +27,6 @@ module.exports = {
     'no-console': 'warn',
     'prettier/prettier': 'error',
     "id-length": ["error", { "min": 2 }],
-    "id-match": ["warn", "^[a-zA-Z]+([A-Z][a-z]+)*$"],
     "no-magic-numbers": ["error", { "ignoreDefaultValues": true , "ignoreArrayIndexes": true, "enforceConst": true}],
     "max-params": ["error", 2],
     "max-lines-per-function": ["warn", { "max": 20 }],
